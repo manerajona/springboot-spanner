@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - preConditions:
+      onFail: HALT
+      onError: HALT
+
+  - changeSet:
+      id: create-singers-table
+      author: spanner-examples
+      changes:
+        - createTable:
+            tableName: singer
+            columns:
+              - column:
+                  name: singer_id
+                  type: STRING(36)
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: singer_name
+                  type: STRING(255)
+                  constraints:
+                    nullable: false
